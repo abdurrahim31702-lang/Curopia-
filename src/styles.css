@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ivory: #f4efe6;
+  --color-chalk: #fbf8f3;
+  --color-stone: #e6dfd2;
+  --color-ink: #141c2b;
+  --color-ink-soft: #3d4758;
+  --color-sage: #5d7468;
+  --color-sage-deep: #3c5248;
+  --color-line: #d8d0c3;
+  --font-sans: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+  --font-display: "Fraunces", "Iowan Old Style", Palatino, Georgia, serif;
+  --tracking-brand: 0.22em;
+  --leading-display: 1.08;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-ivory);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sage-deep);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-sage) 32%, white);
+    color: var(--color-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@keyframes pavilion-drift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+.pavilion-glass {
+  animation: pavilion-drift 8s ease-in-out infinite alternate;
+}
+
+.hp-field {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.lightbox :focus-visible {
+  outline-color: var(--color-chalk);
+}
